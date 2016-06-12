@@ -1,4 +1,4 @@
-package com.example.qiyue.customdialog;
+package com.example.qiyue.customdialog.activity;
 
 import android.annotation.TargetApi;
 import android.app.Dialog;
@@ -13,12 +13,14 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.AnticipateInterpolator;
 import android.view.animation.OvershootInterpolator;
 import android.view.animation.RotateAnimation;
-import android.view.animation.Transformation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener{
+import com.example.qiyue.customdialog.R;
+import com.example.qiyue.customdialog.ui.UgcAnimations;
+
+public class MenuDailogActivity extends AppCompatActivity implements View.OnClickListener{
 
     private Dialog dialog;
     LinearLayout linearLayout;
@@ -38,7 +40,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v.getId()==R.id.dialog_1){
             RotateAnimation rotateAnimation = new RotateAnimation(0f,45f,ivOpen.getWidth()/2,ivOpen.getHeight()/2);
-
             rotateAnimation.setDuration(200);
             ivOpen.startAnimation(rotateAnimation);
             createDialog();
@@ -48,6 +49,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
              ImageView ivClose = (ImageView) v.findViewById(R.id.close_dialog);
              RotateAnimation rotateAnimation = new RotateAnimation(0f,-45f,ivClose.getWidth()/2,ivClose.getHeight()/2);
              rotateAnimation.setDuration(200);
+             rotateAnimation.setFillAfter(true);
              ivClose.startAnimation(rotateAnimation);
              close();
 

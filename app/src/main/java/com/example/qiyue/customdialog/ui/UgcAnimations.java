@@ -1,4 +1,4 @@
-package com.example.qiyue.customdialog;
+package com.example.qiyue.customdialog.ui;
 
 import android.content.Context;
 import android.util.Log;

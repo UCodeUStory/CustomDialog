@@ -1,14 +1,15 @@
 package com.example.qiyue.customdialog;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.SparseArray;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
+
+import com.example.qiyue.customdialog.activity.MenuDailogActivity;
+import com.example.qiyue.customdialog.activity.PopWindowActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,10 +31,11 @@ public class MainListActivity extends AppCompatActivity implements OnClickListen
     public void onClick(View v) {
           switch (v.getId()){
               case R.id.full_screen_btn:
-                   startActivity(new Intent(MainListActivity.this,MainActivity.class));
+                   startActivity(new Intent(MainListActivity.this,MenuDailogActivity.class));
                    toast("full_screen_btn");
                    break;
               case R.id.two_btn:
+                   startActivity(new Intent(MainListActivity.this,PopWindowActivity.class));
                    toast("two_btn");
                    break;
           }

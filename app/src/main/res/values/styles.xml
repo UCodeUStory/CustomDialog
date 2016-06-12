@@ -22,4 +22,9 @@
     <style name="alphaAnim">
         <item name="android:windowEnterAnimation">@anim/dialog_enter_1</item>
     </style>
+
+    <style name="PopupAnimation" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/menu_up</item>
+        <item name="android:windowExitAnimation">@anim/menu_exit</item>
+    </style>
 </resources>
