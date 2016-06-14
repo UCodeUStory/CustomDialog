@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Toast;
 
+import com.example.qiyue.customdialog.activity.BottomPopWindowActivity;
+import com.example.qiyue.customdialog.activity.LeftPopWindowActivity;
 import com.example.qiyue.customdialog.activity.MenuDailogActivity;
 import com.example.qiyue.customdialog.activity.PopWindowActivity;
 
@@ -23,6 +25,8 @@ public class MainListActivity extends AppCompatActivity implements OnClickListen
         ViewBuilder viewBuilder = new ViewBuilder(this);
         viewBuilder.$(R.id.full_screen_btn)
                 .$(R.id.two_btn)
+                .$(R.id.three_btn)
+                .$(R.id.four_btn)
                 .setOnClickListener(this);
     }
 
@@ -38,6 +42,12 @@ public class MainListActivity extends AppCompatActivity implements OnClickListen
                    startActivity(new Intent(MainListActivity.this,PopWindowActivity.class));
                    toast("two_btn");
                    break;
+              case R.id.three_btn:
+                   startActivity(new Intent(MainListActivity.this, BottomPopWindowActivity.class));
+                   break;
+              case R.id.four_btn:
+                  startActivity(new Intent(MainListActivity.this, LeftPopWindowActivity.class));
+                  break;
           }
     }
 

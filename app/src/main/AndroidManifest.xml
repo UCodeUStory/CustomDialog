@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.qiyue.customdialog">
+<manifest package="com.example.qiyue.customdialog"
+          xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:allowBackup="true"
@@ -9,17 +9,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".activity.MenuDailogActivity">
-
         </activity>
         <activity android:name=".MainListActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-
         </activity>
-        <activity android:theme="@style/Theme.AppCompat.NoActionBar" android:name=".activity.PopWindowActivity"/>
+        <activity
+            android:name=".activity.PopWindowActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity
+            android:name=".activity.BottomPopWindowActivity"
+            android:label="@string/title_activity_bottom_pop_window"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".activity.LeftPopWindowActivity">
+        </activity>
     </application>
 
 </manifest>

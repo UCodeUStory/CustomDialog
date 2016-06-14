@@ -8,44 +8,38 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
-import android.widget.TextView;
 
 import com.example.qiyue.customdialog.R;
 
-public class PopWindowActivity extends AppCompatActivity {
+public class LeftPopWindowActivity extends AppCompatActivity {
 
     PopupWindow popupWindow;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_popwindow);
-        TextView textView = (TextView)findViewById(R.id.tv_more);
-        textView.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_left_pop_window);
+        findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 showPopWindow(v);
             }
         });
-
-
     }
 
     private void showPopWindow(View v){
-        LinearLayout layout = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.popwindow_layout,null);
+        LinearLayout layout = (LinearLayout) LayoutInflater.from(this).inflate(R.layout.leftpopwindow,null);
 
-        popupWindow = new PopupWindow(layout,LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT);
+        popupWindow = new PopupWindow(layout,LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.MATCH_PARENT);
 
         popupWindow.setFocusable(true);
         popupWindow.setOutsideTouchable(true);
         popupWindow.setBackgroundDrawable(new BitmapDrawable());
-        popupWindow.setAnimationStyle(R.style.PopupAnimation);
+        popupWindow.setAnimationStyle(R.style.PopupAnimationLeft);
         int[] location = new int[2];
         v.getLocationOnScreen(location);
         int statusBarHeight = getStatusBarHeight();
-       // popupWindow.showAtLocation(this.getWindow().getDecorView(), Gravity.BOTTOM, 0, 0);
-      //  popupWindow.showAtLocation(v, Gravity.NO_GRAVITY, location[0], location[1]-popupWindow.getHeight());
-       // popupWindow.showAtLocation(this.getWindow().getDecorView(), Gravity.TOP, 0, 0);
-        popupWindow.showAtLocation(v, Gravity.TOP,0, statusBarHeight);
+
+        popupWindow.showAtLocation(v, Gravity.LEFT,0, 0);
 
     }
     public int getStatusBarHeight() {
@@ -56,5 +50,4 @@ public class PopWindowActivity extends AppCompatActivity {
         }
         return result;
     }
-
 }
