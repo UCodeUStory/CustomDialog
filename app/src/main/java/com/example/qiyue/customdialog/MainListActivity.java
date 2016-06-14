@@ -1,11 +1,16 @@
 package com.example.qiyue.customdialog;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.WindowManager;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.qiyue.customdialog.activity.BottomPopWindowActivity;
@@ -17,7 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainListActivity extends AppCompatActivity implements OnClickListener{
-
+    WindowManager mWdm;
+    private WindowManager.LayoutParams mParams;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +33,19 @@ public class MainListActivity extends AppCompatActivity implements OnClickListen
                 .$(R.id.two_btn)
                 .$(R.id.three_btn)
                 .$(R.id.four_btn)
+                .$(R.id.five_btn)
                 .setOnClickListener(this);
+        TextView textView = new TextView(this);
+        textView.setText("哈哈");
+        mWdm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+        mParams = new WindowManager.LayoutParams();
+        mParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+        mParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
+        mParams.type = WindowManager.LayoutParams.TYPE_TOAST;
+        mParams.flags = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+                | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
+        mWdm.addView(textView,mParams);
     }
 
 
@@ -47,6 +65,23 @@ public class MainListActivity extends AppCompatActivity implements OnClickListen
                    break;
               case R.id.four_btn:
                   startActivity(new Intent(MainListActivity.this, LeftPopWindowActivity.class));
+                  break;
+              case R.id.five_btn:
+                  LayoutInflater inflater = getLayoutInflater();
+                  View layout = inflater.inflate(R.layout.custom_toast, null);
+                  TextView textView = (TextView)layout.findViewById(R.id.actionbar_height);
+
+                  Toast toast = new Toast(getApplicationContext());
+
+                  //toast.setGravity(Gravity.RIGHT | Gravity.TOP, 12, 40);
+                  //去掉ActionBar高度
+                //  int height = MainListActivity.this.getActionBar().getHeight();
+                  textView.setText("获取不到");
+                  toast.setGravity( Gravity.TOP, 0, 50);
+                  toast.setDuration(Toast.LENGTH_LONG);
+
+                  toast.setView(layout);
+                  toast.show();
                   break;
           }
     }

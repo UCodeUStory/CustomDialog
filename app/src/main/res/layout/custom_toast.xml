@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="#ba5d05"
+ >
+
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+                                        android:textSize="30sp"
+                                        android:gravity="center_horizontal"
+                                        android:text="自定义toast"/>
+    <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+              android:textSize="30sp"
+              android:gravity="center_horizontal"
+              android:text="ActionBar高度"/>
+    <TextView android:id="@+id/actionbar_height" android:layout_width="match_parent" android:layout_height="wrap_content"
+              android:textSize="30sp"
+              android:gravity="center_horizontal"
+              android:text="ActionBar高度"/>
+</LinearLayout>

@@ -48,6 +48,11 @@ public class PopWindowActivity extends AppCompatActivity {
         popupWindow.showAtLocation(v, Gravity.TOP,0, statusBarHeight);
 
     }
+
+    /**
+     * 去除状态栏
+     * @return
+     */
     public int getStatusBarHeight() {
         int result = 0;
         int resourceId = getResources().getIdentifier("status_bar_height", "dimen", "android");
