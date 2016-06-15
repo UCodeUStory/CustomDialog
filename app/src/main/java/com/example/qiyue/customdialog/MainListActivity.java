@@ -1,12 +1,10 @@
 package com.example.qiyue.customdialog;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.WindowManager;
@@ -17,6 +15,7 @@ import com.example.qiyue.customdialog.activity.BottomPopWindowActivity;
 import com.example.qiyue.customdialog.activity.LeftPopWindowActivity;
 import com.example.qiyue.customdialog.activity.MenuDailogActivity;
 import com.example.qiyue.customdialog.activity.PopWindowActivity;
+import com.example.qiyue.customdialog.ui.UToast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +23,9 @@ import java.util.List;
 public class MainListActivity extends AppCompatActivity implements OnClickListener{
     WindowManager mWdm;
     private WindowManager.LayoutParams mParams;
+    View mToastView;
+    private Handler mMHandler;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,16 +39,11 @@ public class MainListActivity extends AppCompatActivity implements OnClickListen
                 .setOnClickListener(this);
         TextView textView = new TextView(this);
         textView.setText("哈哈");
-        mWdm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
-        mParams = new WindowManager.LayoutParams();
-        mParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
-        mParams.width = WindowManager.LayoutParams.WRAP_CONTENT;
-        mParams.type = WindowManager.LayoutParams.TYPE_TOAST;
-        mParams.flags = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
-                | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
-                | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
-        mWdm.addView(textView,mParams);
+
+
     }
+
+
 
 
     @Override
@@ -67,7 +64,7 @@ public class MainListActivity extends AppCompatActivity implements OnClickListen
                   startActivity(new Intent(MainListActivity.this, LeftPopWindowActivity.class));
                   break;
               case R.id.five_btn:
-                  LayoutInflater inflater = getLayoutInflater();
+                  /*LayoutInflater inflater = getLayoutInflater();
                   View layout = inflater.inflate(R.layout.custom_toast, null);
                   TextView textView = (TextView)layout.findViewById(R.id.actionbar_height);
 
@@ -81,7 +78,32 @@ public class MainListActivity extends AppCompatActivity implements OnClickListen
                   toast.setDuration(Toast.LENGTH_LONG);
 
                   toast.setView(layout);
-                  toast.show();
+                  toast.show();*/
+/*
+                  mToastView = LayoutInflater.from(this).inflate(R.layout.toast_layout,null);
+                  //mToastView = Toast.makeText(this, "toast", Toast.LENGTH_SHORT).getView();
+
+                  mWdm = (WindowManager) getSystemService(Context.WINDOW_SERVICE);
+                  mParams = new WindowManager.LayoutParams();
+                  mParams.height = WindowManager.LayoutParams.WRAP_CONTENT;
+                  mParams.width = WindowManager.LayoutParams.MATCH_PARENT;
+                  mParams.windowAnimations = R.style.anim_view;//设置进入退出动画效果
+                  mParams.type = WindowManager.LayoutParams.TYPE_TOAST;
+                  mParams.flags = WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON
+                          | WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
+                          | WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE;
+                  mParams.format = PixelFormat.RGBA_8888;
+                  mParams.y = -400;
+                  mWdm.addView(mToastView,mParams);
+                  mMHandler = new Handler();
+                  mMHandler.postDelayed(new Runnable() {
+                      @Override
+                      public void run() {
+                          mWdm.removeView(mToastView);
+                      }
+                  },3000);*/
+                 // View mToastView = LayoutInflater.from(this).inflate(R.layout.toast_layout,null);
+                  UToast.showToast(this);
                   break;
           }
     }
@@ -118,5 +140,13 @@ public class MainListActivity extends AppCompatActivity implements OnClickListen
                 view.setOnClickListener(listener);
             }
         }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        UToast.detachView();
+       /* mMHandler.removeCallbacksAndMessages(null);
+        mWdm.removeView(mToastView);*/
     }
 }

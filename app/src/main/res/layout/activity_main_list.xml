@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:textSize="30px"
             android:textColor="#0777b7"
-            android:text="全屏Dialog"/>
+            android:text="自定义Toast动画"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

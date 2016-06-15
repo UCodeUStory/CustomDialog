@@ -45,8 +45,8 @@
         <item name="android:windowExitAnimation">@anim/left_menu_exit</item>
     </style>
 
-    <style name="anim_view">
-        <item name="@android:windowEnterAnimation">@anim/anim_in</item>
-        <item name="@android:windowExitAnimation">@anim/anim_out</item>
+    <style name="anim_view" parent="android:Animation">
+        <item name="android:windowEnterAnimation">@anim/toast_in</item>
+        <item name="android:windowExitAnimation">@anim/toast_out</item>
     </style>
 </resources>
