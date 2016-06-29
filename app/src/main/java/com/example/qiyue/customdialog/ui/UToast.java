@@ -59,6 +59,7 @@ public class UToast {
         if (mWdm!=null) {
             if (mToastView!=null) {
                 mWdm.removeView(mToastView);
+                mToastView = null;
             }
         }
     }

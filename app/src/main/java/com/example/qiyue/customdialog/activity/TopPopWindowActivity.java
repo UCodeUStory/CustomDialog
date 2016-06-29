@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.example.qiyue.customdialog.R;
 
-public class PopWindowActivity extends AppCompatActivity {
+public class TopPopWindowActivity extends AppCompatActivity {
 
     PopupWindow popupWindow;
     @Override
